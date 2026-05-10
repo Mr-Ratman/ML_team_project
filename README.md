@@ -93,7 +93,7 @@ The dataset contains Airbnb listing information including:
 - Neighborhood comparison
 - Seasonal pricing trends
 
-### Member 4 — Self-Supervised Learning Model
+### Member 4 — Self-Supervised Learning Model (Preh)
 - Autoencoder model development
 - Reconstruction error calculation
 - Anomaly score generation
