@@ -10,13 +10,38 @@ The project combines:
 - Neural Architecture Search (NAS) for model optimization
 
 ---
-## How to use the Jupyter notebooks
+## How to Use the Jupyter Notebooks
 
-Use a venv to make sure you have all the requirements in the right versions, we need to use python 3.11 because of tensorflow not supporting higher versions:
+It is recommended to use a virtual environment (`venv`) to ensure all dependencies are installed with compatible versions.
+
+> **Note:** Python 3.11 is required because TensorFlow does not currently support newer Python versions.
+
+### Create and Activate the Virtual Environment
+
+```bash
 python3.11 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
+```
 
+### Install Requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+### Launch Jupyter Notebook
+
+```bash
+jupyter notebook
+```
+
+### Select the Correct Kernel
+
+When opening the notebooks, make sure the selected kernel uses the virtual environment:
+
+```text
+Python (ML Project)
+```
 
 
 ## Business Problem
