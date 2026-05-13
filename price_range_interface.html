@@ -1,0 +1,87 @@
+<style>
+html {
+	font-family: sans-serif;
+}
+table {
+	border-collapse: collapse;
+}
+td {
+	border: 1px solid grey;
+	padding: 10px;
+	vertical-align: top;
+}
+label {
+	font-size: small;
+}
+#output {
+	font-size: large;
+	font-weight: bold;
+}
+</style>
+<script>
+var array_neighbourhoods = [
+	{pb: "!1m18!1m12!1m3!1d387193.05050448247!2d-74.30915380756711!3d40.69719336788428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2suk!4v1778686015399!5m2!1sen!2suk", 0: "75-250", 1: "40-120", 2: "28-88"},
+	{pb: "!1m18!1m12!1m3!1d96573.32289222191!2d-73.92333509838782!3d40.851760534528516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c28b553a697cb1%3A0x556e43a78ff15c77!2sBronx%2C%20NY%2C%20USA!5e0!3m2!1sen!2suk!4v1778694754966!5m2!1sen!2suk", 0: "80-140", 1: "40-70", 2: "28-55.5"},
+	{pb: "!1m18!1m12!1m3!1d193747.03188320325!2d-74.1096450337706!3d40.64537482043886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24416947c2109%3A0x82765c7404007886!2sBrooklyn%2C%20NY%2C%20USA!5e0!3m2!1sen!2suk!4v1778694801278!5m2!1sen!2suk", 0: "104-198.2", 1: "50-80", 2: "30-50"},
+	{pb: "!1m18!1m12!1m3!1d96708.16459652623!2d-74.05163210308703!3d40.759162229810265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2588f046ee661%3A0xa0b3281fcecc08c!2sManhattan%2C%20New%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2suk!4v1778694829860!5m2!1sen!2suk", 0: "140-250", 1: "67-120", 2: "49-88"},
+	{pb: "!1m18!1m12!1m3!1d193731.0007397951!2d-74.03594993262081!3d40.65089684542537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24369470a592b%3A0x4109d18b6c5c7b05!2sQueens%2C%20NY%2C%20USA!5e0!3m2!1sen!2suk!4v1778694859541!5m2!1sen!2suk", 0: "90-165", 1: "47-75", 2: "30-50.5"},
+	{pb: "!1m18!1m12!1m3!1d96990.50818451475!2d-74.2292196129242!3d40.56470673979025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c245ef79f4d4e7%3A0x50271f8534babc78!2sStaten%20Island%2C%20NY%2C%20USA!5e0!3m2!1sen!2suk!4v1778694883857!5m2!1sen!2suk", 0: "75-150", 1: "40-75", 2: "29-75"},
+]
+
+function function_display_price_range() {
+	document.getElementById("output").innerHTML = array_neighbourhoods[document.getElementById("select_neighbourhood").value][document.querySelector("input[name='room_type']:checked").value];
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+	document.getElementById("select_neighbourhood").addEventListener("change", function(e) {
+		document.getElementById("iframe_map").src = "https://www.google.com/maps/embed?pb=" + array_neighbourhoods[e.target.value].pb;
+		document.getElementById("entire").checked = true;
+		function_display_price_range();
+	});
+
+	var array_radios = document.querySelectorAll("input[name='room_type']");
+	array_radios.forEach((e) => e.addEventListener("click", function_display_price_range));
+
+	document.getElementById("select_neighbourhood").dispatchEvent(new Event("change"));
+});
+</script>
+<table border='1'>
+	<tr>
+		<td rowspan='2'>
+			<p>neighbourhood: 
+				<select id='select_neighbourhood'>
+					<option value='0'></option>
+					<option value='1'>Bronx</option>
+					<option value='2'>Brooklyn</option>
+					<option value='3'>Manhattan</option>
+					<option value='4'>Queens</option>
+					<option value='5'>Staten Island</option>
+				</select>
+			</p>
+			<p>
+				<iframe id='iframe_map' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>
+			</p>
+		</td>
+		<td>
+			<p>room type:</p>
+			<p>
+    			<input type='radio' id='entire' name='room_type' value='0' checked>
+    			<label for='entire'>Entire home/apt</label>
+    		</p>
+			<p>
+    			<input type='radio' id='private' name='room_type' value='1'>
+    			<label for='private'>Private room</label>
+    		</p>
+			<p>
+    			<input type='radio' id='shared' name='room_type' value='2'>
+    			<label for='entire'>Shared room</label>
+    		</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>price range:</p>
+			<p id='output'></p>
+		</td>
+	</tr>
+</table>
