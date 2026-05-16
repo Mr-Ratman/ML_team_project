@@ -98,7 +98,7 @@ The dataset contains Airbnb listing information including:
 - Reconstruction error calculation
 - Anomaly score generation
 
-### Member 5 — NAS Optimization
+### Member 5 — NAS Optimization (Paul)
 - Hyperparameter tuning using Keras Tuner / Optuna
 - Model architecture optimization
 - Performance comparison with baseline model
