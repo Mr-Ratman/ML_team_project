@@ -1,0 +1,16 @@
+neighbourhood_group,room_type,Q1,Q3
+Bronx,Entire home/apt,80.0,140
+Bronx,Private room,40.0,70
+Bronx,Shared room,28.0,55.5
+Brooklyn,Entire home/apt,104.0,198.2
+Brooklyn,Private room,50.0,80
+Brooklyn,Shared room,30.0,50
+Manhattan,Entire home/apt,140.0,250
+Manhattan,Private room,67.0,120
+Manhattan,Shared room,49.0,88
+Queens,Entire home/apt,90.0,165
+Queens,Private room,47.0,75
+Queens,Shared room,30.0,50.5
+Staten Island,Entire home/apt,75.0,150
+Staten Island,Private room,40.0,75
+Staten Island,Shared room,29.0,75
